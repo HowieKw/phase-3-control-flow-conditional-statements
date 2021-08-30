@@ -19,6 +19,15 @@ describe '#admin_login' do
 
 end
 
+def admin_login(username, password) 
+  if ((username == "admin" || username == "ADMIN") && password == "12345")
+    return "Access granted"
+  else 
+    return "Access denied"
+  end
+end
+
+
 describe '#hows_the_weather' do
   
   it 'returns "It\'s brisk out there!" if the temperature is below 40' do
@@ -38,6 +47,34 @@ describe '#hows_the_weather' do
   end
 
 end
+
+
+def hows_the_weather(temperature) 
+    response = 
+    if temperature < 40
+      "brisk"
+    elsif temperature >= 40 && temperature <= 65
+      "a little chilly"
+    elsif temperature > 85
+      "too dang hot"
+    else 
+      "perfect"
+  end
+  return "It's #{response} out there!"
+end
+
+# def hows_the_weather(temperature) 
+#   if temperature < 40 
+#     return "It's brisk out there!"
+#   elsif (temperature >= 40 && temperature <= 65)
+#     return "It's a little chilly out there!"
+#   elsif temperature > 85
+#     return "It's too dang hot out there!"
+#   else return "It's perfect out there!"
+# end
+# end
+
+
 
 describe '#fizzbuzz' do
   
@@ -62,6 +99,21 @@ describe '#fizzbuzz' do
   end
 
 end
+
+
+def fizzbuzz(num)
+  if num % 3 == 0 && num % 5 == 0
+    return "FizzBuzz"
+  elsif num % 3 == 0
+    return "Fizz"
+  elsif num % 5 == 0
+    return "Buzz"
+  else
+    return num
+  end 
+end
+
+
 
 describe '#calculator' do
   
@@ -89,4 +141,20 @@ describe '#calculator' do
     expect(calculator('nope', 4, 2)).to eq(nil)
   end
   
+end
+
+
+def calculator(operation, num1, num2)
+  case operation
+  when "+"
+    return num1 + num2
+  when "-"
+    return num1 - num2
+  when "*"
+    return num1 * num2
+  when "/"
+    return num1 / num2
+  else
+    puts "Invalid operation!"
+  end
 end
